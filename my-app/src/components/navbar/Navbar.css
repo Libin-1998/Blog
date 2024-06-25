@@ -1,0 +1,21 @@
+.navbar-brand{
+    font-weight: bolder;
+    font-size: 40px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+
+}
+.nav-link{
+    font-weight: bold;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.textbg{
+    background-color: rgb(206, 223, 237);
+    padding: 0%;
+}
+.navbar{
+    padding: 0%;
+}
+.linkline{
+    text-decoration: none;
+}

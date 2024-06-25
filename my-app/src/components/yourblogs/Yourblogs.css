@@ -1,0 +1,21 @@
+.cols{
+    width: 350px;
+    padding: 15px;
+    background-color: rgb(237, 233, 228);
+    border-radius: 10px;
+}
+.box{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+    
+
+}
+.editbut{
+    margin-right: 2px;
+}
+.deletebut{
+    margin-left: 2px;
+}
