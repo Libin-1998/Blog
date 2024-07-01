@@ -27,6 +27,7 @@ axios.post('http://localhost:6060/api/auth/login',log)
   localStorage.setItem('logged',true)
   localStorage.setItem('token',response.data.token)
   localStorage.setItem('name',response.data.name)
+  localStorage.setItem('loginID',response.data.loginId)
 
 
   setTimeout(() => {
@@ -36,8 +37,8 @@ axios.post('http://localhost:6060/api/auth/login',log)
  
 })
 .catch((error)=>{
-  console.log(error);
-  toast.error(error)
+  console.log(error.response);
+  toast.error(error.response.data.message)
 })
 
 
@@ -47,24 +48,24 @@ axios.post('http://localhost:6060/api/auth/login',log)
     <>
 
 <ToastContainer/>
-<form className='width'>
-<h1 className='loghead'>Login</h1>
-  <div class="col mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-    onChange={logChange} name='email'/>
+<div className='container-fluid logcls'>
+  <h1 className='loginhead'>LOGIN</h1>
+  <div className="loginpage">
+
+  <div className='labels'>
+    <label htmlFor="" className='label'>Email id</label><br />
+    <input type="text" className='inputwidth' onChange={logChange} name='email'/><br />
+
+    <label htmlFor="" className='label'>Password</label><br />
+    <input type="text" className='inputwidth' onChange={logChange} name='password'/><br /><br />
   </div>
-  <div class="col mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1"
-    onChange={logChange} name='password'/>
   </div>
 
-  <div className='subbut'>
-  <button type="submit" class="btn btn-primary" onClick={handleSubmit}>Submit</button>
+  <div className='logsubmit'>
+  <button className='logsub' onClick={handleSubmit}>Login</button>
   </div>
-</form>
 
+</div>
 
     </>
   )

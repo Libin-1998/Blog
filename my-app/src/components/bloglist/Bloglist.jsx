@@ -10,12 +10,6 @@ export default function Bloglist() {
     const token=localStorage.getItem('token')
     console.log(token);
 
-    const author=localStorage.getItem('name')
-    console.log(author);
-
-
-
-
     useEffect(()=>{
         axios.get('http://localhost:6060/api/blogs/viewblog',
             {
@@ -34,55 +28,22 @@ export default function Bloglist() {
     },[])
     console.log(item); 
 
-    const Deletelist=(id)=>{
-        console.log(id);
-        axios.delete(`http://localhost:6060/api/blogs/delete/${id}`)
-        .then((response)=>{
-            console.log(response);
-            toast.success(response.data.message)
-           setTimeout(()=>{
-            window.location.reload()
-           },2000)
-        })
-        
-        .catch((error)=>{
-            console.log(error);
-        })
-
-    }
-
-    
-
-
-
-
-
   return (
     <>
     <ToastContainer/>
- <div className='container-fluid box'>
+ <div className='container-fluid listblog'>
     {item.map((data)=>(
-    <div className='cols'>
+
+    <div className='blogbox'>
+    <img src="images/listBG.jpeg" alt="" className='imgsize'/>
+<div  className='mapdata'>
         <h2>{data.title}</h2>
-        <h5>{data.content}</h5>
-        <h3>{data.author}</h3>
-        <h3>{data.timestamp}</h3>
-
-
-{author===data.author ?(
-    <>
-        <div className='editdelete '>
-    <button className='editbut'><Link to={`/blogedit/${data._id}`}>Edit</Link></button>
-    <button className='deletebut' onClick={()=>Deletelist(data._id)}>Delete</button>
-    </div>
-    </>
-    ):('')}
-
-
+        <h6 className='contentcls'>{data.content}</h6>
+        <h5 className='authorcls'>- {data.author}</h5>
+        <h6 className='timestampcls'>{data.timestamp}</h6>
+        </div>
     </div>
     ))}
-
-
     
  </div>
       

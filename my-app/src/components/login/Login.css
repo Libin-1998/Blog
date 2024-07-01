@@ -1,6 +1,44 @@
-.form-control{
-    width: 40%;
+.loginhead{
+    text-align: center;
+    padding-top: 50px;
 }
-.width{
-    padding-left: 20px;
+.inputwidth{
+    width: 300px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    opacity: 40%;
 }
+.loginpage{
+    display: flex;
+    justify-content: center;
+}
+.logsubmit{
+    text-align: center;
+}
+.logsub{
+    width: 300px;
+    border-radius: 5px;
+    background-color: skyblue;
+    border: none;
+    height: 40px;
+    font-weight: 500;
+    opacity: 70%;
+}
+@media(max-width:360px){
+    .inputwidth{
+        width: 100%;
+    }
+    .logsub{
+        width:190px;
+    }
+}
+.logcls{
+    background-image: url(../../../public/images/loginBG.jpeg);
+    height: 500px;
+}
+.label{
+    font-size: large;
+    font-weight: 700;
+}
+ 

@@ -1,4 +1,5 @@
 import axios from "axios";
+import "./Postform.css"
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -45,61 +46,38 @@ export default function Postform() {
   return (
     <>
       <ToastContainer />
-      <h1 className="p-4">Create Blog</h1>
-      <div class="mb-3 ps-3">
-        <label for="formGroupExampleInput" class="form-label">
-          Title
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          id="formGroupExampleInput"
-          onChange={dataChange}
-          name="title"
-        />
-      </div>
-      <div class="mb-3 ps-3">
-        <label for="formGroupExampleInput2" class="form-label">
-          Content{" "}
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          id="formGroupExampleInput2"
-          onChange={dataChange}
-          name="content"
-        />
-      </div>
-      {/* <div class="mb-3 ps-3">
-        <label for="formGroupExampleInput2" class="form-label">
-          Author{" "}
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          id="formGroupExampleInput2"
-          onChange={dataChange}
-          name="author"
-        />
-      </div> */}
-      <div class="mb-3 ps-3">
-        <label for="formGroupExampleInput2" class="form-label">
-          Timestamp{" "}
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          id="formGroupExampleInput2"
-          onChange={dataChange}
-          name="timestamp"
-        />
+
+      <div className="container-fluid createcls">
+        <h1 className="createhead">CREATE BLOG</h1>
+        <div className="createpage">
+
+        <div className="createlabels">
+          <label htmlFor="" className="createlabel">Title</label><br />
+          <input type="text" className="createinput" onChange={dataChange} name="title"/><br />
+
+          <label htmlFor="" className="createlabel">Content</label><br />
+          <input type="text" className="createinput" onChange={dataChange} name="content"/><br />
+
+          {/* <label htmlFor="" className="createlabel">Author</label>
+          <input type="text" className="createinput" onChange={dataChange} name="author"/> */}
+
+          <label htmlFor="" className="createlabel">timestamp</label><br />
+          <input type="text" className="createinput" onChange={dataChange} name="timestamp"/><br />
+
+        </div>
+        </div>
+        <br />
+<div className="postbutton">
+  <button className="postbut" onClick={handleSubmit}>Submit</button>
+</div>
+
+
       </div>
 
-      <div className="subbut ps-3">
-        <button type="submit" class="btn btn-primary" onClick={handleSubmit}>
-          Submit
-        </button>
-      </div>
+
+
+
+
     </>
   );
 }

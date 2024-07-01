@@ -7,27 +7,28 @@ export default function Navbar() {
   const logs=localStorage.getItem('logged')
   
   const removed=()=>{
-    localStorage.removeItem('logged')
-navigate('/')
+    // localStorage.removeItem('logged')
+    localStorage.clear()
+navigate('/login')
   }
   
   return (
     <>
 
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-sm">
   <div class="container-fluid textbg">
-    <a class="navbar-brand " href="#">Blog</a>
+    <a class="navbar-brand " href="#"><span>"Plan</span> <span>B"</span></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>   
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
       <div class="navbar-nav"> 
         <Link to={'/'} className='linkline'>
-        <a class="nav-link active" aria-current="page" href="">Home</a>  
+        <a class="nav-link" aria-current="page" href="">Home</a>  
         </Link>
 
         <Link to={'/bloglist'} className='linkline'>
-        <a class="nav-link" href="#">Blog List</a>
+        <a class="nav-link" href="">Blog List</a>
         </Link>
 
        
@@ -41,12 +42,12 @@ navigate('/')
         <a class="nav-link" href="#">Create Blog</a>
         </Link>
 
-        <Link to={'/blogedit'}className='linkline'>
-        <a class="nav-link" href="#">Edit Blog</a>
+        <Link to={'/yourblogs'} className='linkline'>
+        <a class="nav-link" aria-current="page" href="">Your Blogs</a>  
         </Link>
 
-        <Link to={'/yourblogs'} className='linkline'>
-        <a class="nav-link active" aria-current="page" href="">Your Blogs</a>  
+        <Link to={'/profiles'} className='linkline'>
+        <a class="nav-link" aria-current="page" href="">Profile</a>  
         </Link>
 
 <a class="nav-link" href="#" onClick={removed}>Logout</a>
@@ -72,7 +73,6 @@ navigate('/')
     </div>
   </div>
 </nav>
-
 
 
     </>

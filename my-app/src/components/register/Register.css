@@ -1,11 +1,36 @@
-.col{
-    padding-right: 0%;
+.regpage{
+    display: flex;
+    justify-content: center;
 }
-.subbutt{
-    padding: 0%;
+.reghead{
+    text-align: center;
 }
-.rows{
-    margin-right: 0%;
-    padding: 0%;
-    margin-left: 6px;
+.regbutton{
+    text-align: center;
+}
+.reginput{
+    width: 400px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    opacity: 35%;
+}
+.reglabel{
+    font-size: large;
+    font-weight: 800;
+    
+}
+.regbut{
+    width: 400px;
+    border-radius: 5px;
+    font-size: large;
+    font-weight: 700;
+    background-color: rgb(189, 242, 242);
+    border: none;
+    height: 35px;
+    opacity: 75%;
+}
+.regcls{
+    background-image: url(../../../public/images/regBG.jpeg);
+    height: 500px;
 }

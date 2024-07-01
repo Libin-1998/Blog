@@ -10,6 +10,7 @@ import Postform from './components/postform/Postform';
 import Bloglist from './components/bloglist/Bloglist';
 import Blogedit from './components/blogedit/Blogedit';
 import Yourblogs from './components/yourblogs/Yourblogs';
+import Profile from './components/profile/Profile';
 
 
 function App() {
@@ -23,10 +24,11 @@ function App() {
       <Route path='/register' element={<Register/>}/>
       <Route path='/postform' element={<Postform/>}/>
       <Route path='/bloglist' element={<Bloglist/>}/>
-      <Route path='blogedit/:id' element={<Blogedit/>}/>
-      <Route path='yourblogs' element={<Yourblogs/>}/>
-
+      <Route path='/blogedit/:id' element={<Blogedit/>}/>
+      <Route path='/yourblogs' element={<Yourblogs/>}/>
+      <Route path='/profiles' element={<Profile/>}/>
     </Routes>
+
     </Router>
     </>
   );

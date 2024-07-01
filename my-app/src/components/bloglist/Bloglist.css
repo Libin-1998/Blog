@@ -1,21 +1,48 @@
-.cols{
+.blogbox{
     width: 350px;
-    padding: 15px;
-    background-color: rgb(237, 233, 228);
+    background-color: white;
     border-radius: 10px;
+    
 }
-.box{
+.listblog{
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 10px;
-    
-
+    background-image: url(../../../public/images/blogBG.jpeg);
+    padding-top: 20px;
+}
+.mapdata{
+    padding: 15px;
 }
 .editbut{
     margin-right: 2px;
 }
 .deletebut{
     margin-left: 2px;
+}
+.imgsize{
+    height: 200px;
+    width: 350px;
+    border-radius: 10px 10px 0px 0px;
+}
+.authorcls{
+    color: grey;
+}
+.timestampcls{
+    background-color: antiquewhite;
+    width: 128px;
+    color: rgb(174, 174, 68);
+}
+@media(max-width:390px){
+   .imgsize{
+    width: 100%;
+    height: 150px;
+   }
+   .contentcls{
+    font-size: small;
+   }
+    .blogbox{
+width: 100%;
+    }
 }

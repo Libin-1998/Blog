@@ -18,9 +18,7 @@ authRoutes.post("/register", async (req, res) => {
     const saved = await loginSchema(login).save();
 
     const reg = {
-      name: req.body.name,
       phone: req.body.phone,
-      email: req.body.email,
       place: req.body.place,
       loginId: saved._id,
     };
@@ -33,6 +31,7 @@ authRoutes.post("/register", async (req, res) => {
         message: "register successfully",
       });
     }
+    
   } catch (error) {
     return res.status(500).json({
       success: false,
@@ -49,7 +48,7 @@ authRoutes.post("/login", async (req, res) => {
     const password = req.body.password;
 
     if (!email || !password) {
-      res.status(400).json({
+     return res.status(400).json({
         success: false,
         error: true,
         message: "All fields are required",
@@ -57,7 +56,7 @@ authRoutes.post("/login", async (req, res) => {
     }
     const checkEmail = await loginSchema.findOne({ email: req.body.email });
     if (!checkEmail) {
-      res.status(400).json({
+        return res.status(400).json({
         success: false,
         error: true,
         message: "email doesn't exist,register first",
@@ -86,6 +85,8 @@ authRoutes.post("/login", async (req, res) => {
         message: "login success",
         token: token,
         name: checkEmail.name,
+        loginId:checkEmail._id,
+        
       });
     } else {
       return res.status(400).json({
@@ -103,5 +104,27 @@ authRoutes.post("/login", async (req, res) => {
     });
   }
 });
+
+
+authRoutes.get("/profile/:id", async (req, res) => {
+
+  const check = await registerSchema.findOne({ loginId:req.params.id });
+  if(check){
+    return res.status(200).json({
+      success:true,
+      error:false,
+      message:'view success',
+      data:check,
+    })
+  }
+  else{
+    return res.status(400).json({
+      success:false,
+      error:true,
+      message:'view error'
+    })
+  }
+
+})
 
 module.exports = authRoutes;

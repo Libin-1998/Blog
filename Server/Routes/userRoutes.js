@@ -132,9 +132,4 @@ userRoutes.get('/viewsame/:name',async(req,res)=>{
     }
 })
 
-
-
-
-
-
 module.exports=userRoutes

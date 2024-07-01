@@ -51,29 +51,39 @@ export default function Yourblogs() {
 
   return (
     <>
- <div className='container-fluid box'>
+ <div className='container-fluid yourcls'>
+
+    <ToastContainer/>
+    
+<div className='your'>
  {item.map((data)=>(
-    <div className='cols'>
+ <div className='yourblog'>
+
+        <div className=''>
         <h2>{data.title}</h2>
         <h5>{data.content}</h5>
         <h3>{data.author}</h3>
         <h3>{data.timestamp}</h3>
-
+      </div>
 
 {author===data.author ?(
     <>
         <div className='editdelete '>
-    <button className='editbut'><Link to ={`/blogedit/${data._id}`}>Edit</Link></button>
+    <button className='editbut'><Link to ={`/blogedit/${data._id}`} className='linkcolor'>Edit</Link></button>
     <button className='deletebut' onClick={()=>Deletelist(data._id)}>Delete</button>
     </div>
+
+
     </>
+
     ):('')}
 
-
     </div>
-    ))}
 
-      </div>
+    ))}
+    </div>
+    </div>
+
     </>
   )
 }
