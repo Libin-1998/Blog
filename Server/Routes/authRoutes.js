@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const loginSchema = require("../Models/loginSchema");
 const registerSchema = require("../Models/registerSchema");
 const jwt = require("jsonwebtoken");
+const auth = require("../middlewares/auth");
 
 var authRoutes = express.Router();
 
@@ -21,6 +22,10 @@ authRoutes.post("/register", async (req, res) => {
       phone: req.body.phone,
       place: req.body.place,
       loginId: saved._id,
+      name: req.body.name,
+      email: req.body.email,
+
+
     };
     const saves = await registerSchema(reg).save();
 
@@ -106,9 +111,46 @@ authRoutes.post("/login", async (req, res) => {
 });
 
 
-authRoutes.get("/profile/:id", async (req, res) => {
+authRoutes.get("/profile/:id",auth, async (req, res) => {
 
-  const check = await registerSchema.findOne({ loginId:req.params.id });
+  const check = await loginSchema.aggregate([
+    {
+      '$lookup': {
+        'from': 'registers', 
+        'localField': '_id', 
+        'foreignField': 'loginId', 
+        'as': 'results'
+      }
+    }, {
+      '$unwind': {
+        'path': '$results'
+      }
+    },
+    {
+      $match:{_id:new mongoose.Types.ObjectId(req.params.id)}
+    },
+     {
+      '$group': {
+        '_id': '$_id', 
+        'loginId': {
+          '$first': '$results.loginId'
+        }, 
+        'phone': {
+          '$first': '$results.phone'
+        }, 
+        'place': {
+          '$first': '$results.place'
+        }, 
+        'email': {
+          '$first': '$email'
+        }, 
+        'name': {
+          '$first': '$name'
+        }
+      }
+    }
+  ])
+
   if(check){
     return res.status(200).json({
       success:true,

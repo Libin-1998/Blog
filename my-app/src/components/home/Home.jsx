@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 export default function Home() {
-  const logs = localStorage.getItem("logged");
+  const logs = sessionStorage.getItem("logged");
 
   const [data, setData] = useState([]);
   useEffect(() => {

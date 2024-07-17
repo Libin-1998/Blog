@@ -5,12 +5,12 @@ module.exports=(req,res,next)=>{
         const token=req.headers.authorization.split(' ')[1]
         console.log(token);
 
-        const decodedData=jwt.verify(token.process.env.JWT_KEY)
+        const decodedData=jwt.verify(token,process.env.JWT_KEY)
         req.userData={
             userId:decodedData.userId,
             email:decodedData.email,
         }
-        console.log(userData);
+        console.log(req.userData);
         next()
 
     } catch (error) {

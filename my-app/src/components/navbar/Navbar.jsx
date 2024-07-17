@@ -4,11 +4,11 @@ import { Link, useNavigate } from 'react-router-dom'
 
 export default function Navbar() {
   const navigate=useNavigate()
-  const logs=localStorage.getItem('logged')
+  const logs=sessionStorage.getItem('logged')
   
   const removed=()=>{
-    // localStorage.removeItem('logged')
-    localStorage.clear()
+    // sessionStorage.removeItem('logged')
+    sessionStorage.clear()
 navigate('/login')
   }
   

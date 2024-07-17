@@ -24,10 +24,10 @@ axios.post('http://localhost:6060/api/auth/login',log)
   console.log(response);
   toast.success(response.data.message)
 
-  localStorage.setItem('logged',true)
-  localStorage.setItem('token',response.data.token)
-  localStorage.setItem('name',response.data.name)
-  localStorage.setItem('loginID',response.data.loginId)
+  sessionStorage.setItem('logged',true)
+  sessionStorage.setItem('token',response.data.token)
+  sessionStorage.setItem('name',response.data.name)
+  sessionStorage.setItem('loginID',response.data.loginId)
 
 
   setTimeout(() => {

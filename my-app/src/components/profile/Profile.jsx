@@ -5,19 +5,23 @@ import Login from "../login/Login";
 
 
 export default function Profile() {
-    const token=localStorage.getItem('token')
-    const logId=localStorage.getItem('loginID')
 
-    const [data,setData]=useState([])
+    const tokens=sessionStorage.getItem('token')
+    console.log(tokens);
+    const logId=sessionStorage.getItem('loginID')
+
+    const [data,setData]=useState({})
+
     useEffect(()=>{
         axios.get(`http://localhost:6060/api/auth/profile/${logId}`,
-            // {
-            //     headers:{Authorization:`Bearer ${token}`}
-            // }
+            {
+                headers:{Authorization:`Bearer ${tokens}`
+              }
+            }
         )
         .then((response)=>{
             console.log(response);
-            setData(response.data.data)
+            setData(response.data.data[0])
         })
         .catch((error)=>{
             console.log(error);

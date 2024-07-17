@@ -1,33 +1,49 @@
 import axios from "axios";
-import "./Postform.css"
+import "./Postform.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
 export default function Postform() {
-  const author = localStorage.getItem("name");
-  
-  const [data, setData] = useState({
-    title:'',
-    content:'',
-    author:author,
-    timestamp:'',
-  });
+  const author = sessionStorage.getItem("name");
+  const token = sessionStorage.getItem("token");
+
   const navigate = useNavigate();
+
+  const [data, setData] = useState({
+    title: "",
+    content: "",
+    author: author,
+    timestamp: "",
+  });
 
   const dataChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setData({ ...data, [name]: value });
-    console.log(data);
   };
+
+  console.log(data);
+
+  const imageChange = (event) => {
+    setData({ ...data, image: event.target.files[0] });
+    console.log(data.image);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const token = localStorage.getItem("token");
+    const formdata = new FormData();
+    formdata.append("title", data.title);
+    formdata.append("content", data.content);
+    formdata.append("timestamp", data.timestamp);
+    formdata.append("image", data.image);
+    formdata.append("author", data.author);
+
+    console.log(formdata);
 
     axios
-      .post("http://localhost:6060/api/blogs/addblog", data, {
+      .post("http://localhost:6060/api/blogs/addblog", formdata, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
@@ -50,34 +66,76 @@ export default function Postform() {
       <div className="container-fluid createcls">
         <h1 className="createhead">CREATE BLOG</h1>
         <div className="createpage">
+          <form encType="multipart/form-data">
+            <div className="createlabels">
+              <label htmlFor="" className="createlabel">
+                Title
+              </label>
+              <br />
+              <input
+                type="text"
+                className="createinput"
+                onChange={dataChange}
+                name="title"
+              />
+              <br />
 
-        <div className="createlabels">
-          <label htmlFor="" className="createlabel">Title</label><br />
-          <input type="text" className="createinput" onChange={dataChange} name="title"/><br />
+              <label htmlFor="" className="createlabel">
+                Content
+              </label>
+              <br />
+              <input
+                type="text"
+                className="createinput"
+                onChange={dataChange}
+                name="content"
+              />
+              <br />
 
-          <label htmlFor="" className="createlabel">Content</label><br />
-          <input type="text" className="createinput" onChange={dataChange} name="content"/><br />
+              <label htmlFor="" className="createlabel">
+                timestamp
+              </label>
+              <br />
+              <input
+                type="text"
+                className="createinput"
+                onChange={dataChange}
+                name="timestamp"
+              />
+              <br />
 
-          {/* <label htmlFor="" className="createlabel">Author</label>
-          <input type="text" className="createinput" onChange={dataChange} name="author"/> */}
+              <label htmlFor="" className="createlabel">
+                author
+              </label>
+              <br />
+              <input
+                type="text"
+                className="createinput"
+                onChange={dataChange}
+                name="author"
+              />
+              <br />
 
-          <label htmlFor="" className="createlabel">timestamp</label><br />
-          <input type="text" className="createinput" onChange={dataChange} name="timestamp"/><br />
-
+              <label htmlFor="" className="createlabel">
+                Image
+              </label>
+              <br />
+              <input
+                type="file"
+                className="createinput"
+                onChange={imageChange}
+                name="image"
+              />
+            </div>
+            <br />
+            <div className="postbutton">
+              <button className="postbut" onClick={handleSubmit}>
+                Submit
+              </button>
+            </div>
+          </form>
         </div>
-        </div>
-        <br />
-<div className="postbutton">
-  <button className="postbut" onClick={handleSubmit}>Submit</button>
-</div>
-
-
       </div>
-
-
-
-
-
     </>
   );
 }

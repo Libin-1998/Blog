@@ -1,16 +1,28 @@
 var express=require('express')
 var mongoose=require('mongoose')
+var multer=require('multer')
 const userSchema = require('../Models/userSchema')
 const loginSchema = require('../Models/loginSchema')
 
+const storage=multer.diskStorage({
+    destination:function(req,file,cb){
+        cb(null,'../my-app/public/images/')
+    },
+    filename:function(req,file,cb){
+        cb(null,file.originalname)
+    },
+})
+const upload=multer({storage})
+
 var userRoutes=express.Router()
 
-userRoutes.post('/addblog',async(req,res)=>{
+userRoutes.post('/addblog',upload.single('image'),async(req,res)=>{
     const add={
         title:req.body.title,
         content:req.body.content,
         author:req.body.author,
         timestamp:req.body.timestamp,
+        image:req.file.filename,
     }
     const save=await userSchema(add).save()
     if(save){
@@ -74,7 +86,9 @@ userRoutes.put('/updateblog/:id',async(req,res)=>{
         title:req.body.title?req.body.title:olddata.title,
         content:req.body.content?req.body.content:olddata.content,
         author:req.body.author?req.body.author:olddata.author,
-        timestamp:req.body.timestamp?req.body.timestamp:olddata.timestamp
+        timestamp:req.body.timestamp?req.body.timestamp:olddata.timestamp,
+        image:req.file?req.file.filename:olddata.image,
+
     }
     const update=await userSchema.updateOne({_id:req.params.id},{$set:newdata})
     if(update){

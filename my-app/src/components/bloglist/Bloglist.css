@@ -1,7 +1,10 @@
 .blogbox{
-    width: 350px;
-    background-color: white;
+    width: 382px;
+    background-color: #f8d7d7;
     border-radius: 10px;
+    /* border: solid 10px #8785a2; */
+    /* border: solid 10px #ffc7c7; */
+    /* color: white; */
     
 }
 .listblog{
@@ -10,7 +13,8 @@
     flex-wrap: wrap;
     justify-content: center;
     background-image: url(../../../public/images/blogBG.jpeg);
-    padding-top: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 .mapdata{
     padding: 15px;
@@ -22,9 +26,9 @@
     margin-left: 2px;
 }
 .imgsize{
-    height: 200px;
-    width: 350px;
-    border-radius: 10px 10px 0px 0px;
+    height: 250px;
+    /* border-radius: 10px 10px 0px 0px; */
+    width: 100%;
 }
 .authorcls{
     color: grey;

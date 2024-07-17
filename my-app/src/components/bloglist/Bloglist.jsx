@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 export default function Bloglist() {
 
     const[item,setItem]=useState([])
-    const token=localStorage.getItem('token')
+    const token=sessionStorage.getItem('token')
     console.log(token);
 
     useEffect(()=>{
@@ -35,7 +35,10 @@ export default function Bloglist() {
     {item.map((data)=>(
 
     <div className='blogbox'>
-    <img src="images/listBG.jpeg" alt="" className='imgsize'/>
+
+    <img src={`/images/${data.image}`} className='imgsize' />
+
+
 <div  className='mapdata'>
         <h2>{data.title}</h2>
         <h6 className='contentcls'>{data.content}</h6>
