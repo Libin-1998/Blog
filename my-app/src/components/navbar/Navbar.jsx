@@ -15,9 +15,9 @@ navigate('/login')
   return (
     <>
 
-<nav class="navbar navbar-expand-sm">
+<nav class="navbar navbar-expand-sm planhead">
   <div class="container-fluid textbg">
-    <a class="navbar-brand " href="#"><span>"Plan</span> <span>B"</span></a>
+    <a class="navbar-brand plans " href="/"><span className='spanplan'>"Plan</span> <span className='spanplan'>B"</span></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>   

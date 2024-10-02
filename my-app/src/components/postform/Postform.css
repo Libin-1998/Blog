@@ -1,6 +1,7 @@
 .createhead{
     text-align: center;
     color: white;
+    padding-top: 30px;
 }
 .createpage{
     display: flex;

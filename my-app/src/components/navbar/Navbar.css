@@ -1,14 +1,14 @@
 body{
     overflow-x: hidden;
 }
-.navbar-brand{
+.plans{
     font-weight: bolder;
     font-size: 40px;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 
 }
-.navbar-brand:focus, .navbar-brand:hover{
+.plans:focus, .plans:hover{
     color: rgb(216, 96, 225);
 }
 .nav-link:hover {
@@ -24,17 +24,17 @@ body{
     box-shadow:10px 10px 5px ;  
     }
 
-.navbar{
+.planhead{
     padding: 0%;
 }
 .linkline{
     text-decoration: none;
 }
-.navbar-brand,.nav-link{
+.plans,.nav-link{
     color: white;
 
 }
-.navbar-brand{
+.plans{
 
         font-family: "Lora", serif;
         font-optical-sizing: auto;
@@ -53,11 +53,11 @@ body{
     transform: scale(0.9);
     display: inline-block;
   }
-  span:first-child {
+  .spanplan:first-child {
     animation: bop 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards infinite
       alternate;
   }
-  span:last-child {
+  .spanplan:last-child {
     animation: bopB 1s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards
       infinite alternate;
   }

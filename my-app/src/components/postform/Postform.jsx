@@ -49,9 +49,9 @@ export default function Postform() {
       .then((response) => {
         console.log(response);
         toast.success(response.data.message);
-        setTimeout(() => {
+        // setTimeout(() => {
           navigate("/bloglist");
-        }, 2000);
+        // }, 2000);
       })
       .catch((error) => {
         console.log(error);
@@ -61,9 +61,10 @@ export default function Postform() {
 
   return (
     <>
-      <ToastContainer />
 
       <div className="container-fluid createcls">
+      <ToastContainer />
+
         <h1 className="createhead">CREATE BLOG</h1>
         <div className="createpage">
           <form encType="multipart/form-data">
@@ -101,18 +102,6 @@ export default function Postform() {
                 className="createinput"
                 onChange={dataChange}
                 name="timestamp"
-              />
-              <br />
-
-              <label htmlFor="" className="createlabel">
-                author
-              </label>
-              <br />
-              <input
-                type="text"
-                className="createinput"
-                onChange={dataChange}
-                name="author"
               />
               <br />
 
